@@ -108,8 +108,16 @@ set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 " Enable more colors - required by some themes.
 set termguicolors
 
-" Turn on the Apprentice theme.
-colorscheme Apprentice
+" Enable the dark variant
+set background=dark
+
+" Turn on a specific theme.
+"colorscheme dracula
+"colorscheme Apprentice
+"colorscheme anderson
+colorscheme lucius
+"colorscheme pink-moon
+"colorscheme solarized8
 
 
 " -----------------------------------------------------------------------------
