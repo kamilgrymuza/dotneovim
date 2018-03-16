@@ -7,6 +7,13 @@ call plug#begin('~/.local/shared/nvim/plugged')
 " NERD Tree (file browser)
 Plug 'scrooloose/nerdtree'
 
+" Integrate GIT
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Better commenting support
+Plug 'scrooloose/nerdcommenter'
+
 " ACK support
 Plug 'mileszs/ack.vim'
 
@@ -16,6 +23,24 @@ Plug 'rafi/awesome-vim-colorschemes'
 " JavaScript syntax highlighting
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+
+" Asynchronous linting
+Plug 'w0rp/ale'
+
+" Tree-based undo
+Plug 'sjl/gundo.vim'
+
+" HTML5 completion and syntax
+Plug 'othree/html5.vim'
+
+" Support for .editorconfig files
+Plug 'editorconfig/editorconfig-vim'
+
+" Dockerfile syntax
+Plug 'ekalinin/dockerfile.vim'
+
+" Distraction-free writing
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
