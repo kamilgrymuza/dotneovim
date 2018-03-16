@@ -5,7 +5,7 @@
 call plug#begin('~/.local/shared/nvim/plugged')
 
 " NERD Tree (file browser)
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 
 " ACK support
 Plug 'mileszs/ack.vim'
@@ -179,7 +179,7 @@ map <leader>N :NERDTreeToggle<CR>
 
 " Quit VIM if the only window left is a NERDTree window.
 autocmd bufenter * if ( winnr("$") == 1 && exists("b:NERDTreeType") &&
-    \ b:NERDTreeType == "primary" ) | q | endif
+      \ b:NERDTreeType == "primary" ) | q | endif
 
 " Show NERDTREE if VIM was started with no arguments (i.e. file to open).
 autocmd vimenter * if !argc() | NERDTree | endif
