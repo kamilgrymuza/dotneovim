@@ -42,6 +42,13 @@ Plug 'ekalinin/dockerfile.vim'
 " Distraction-free writing
 Plug 'junegunn/goyo.vim'
 
+" Autocompletion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+
+" Supertab for using tab in insert mode
+Plug 'ervandew/supertab'
+
 call plug#end()
 
 
@@ -224,3 +231,39 @@ autocmd vimenter * if !argc() | NERDTree | endif
 
 " Map to A key.
 nmap <leader>A <Esc>:Ack!
+
+
+" -----------------------------------------------------------------------------
+" JEDI
+" -----------------------------------------------------------------------------
+
+" Disable automatic display of documentation, this can be achieved with K key.
+let g:jedi#show_function_definition=0
+
+" Disable showing completions when dot is entered (in favor of supertab).
+let g:jedi#popup_on_dot=0
+
+
+" -----------------------------------------------------------------------------
+" AUTOCOMPLETION
+" -----------------------------------------------------------------------------
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+
+" omnifuncs
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
+
+" Don't autocomplete and use a tab to trigger manually
+let g:deoplete#disable_auto_complete = 0
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
