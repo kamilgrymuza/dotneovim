@@ -14,6 +14,9 @@ Plug 'airblade/vim-gitgutter'
 " Better commenting support
 Plug 'scrooloose/nerdcommenter'
 
+" HTML5 support
+Plug 'othree/html5.vim'
+
 " ACK support
 Plug 'mileszs/ack.vim'
 
@@ -48,6 +51,9 @@ Plug 'zchee/deoplete-jedi'
 
 " Supertab for using tab in insert mode
 Plug 'ervandew/supertab'
+
+" Vue
+Plug 'posva/vim-vue'
 
 call plug#end()
 
@@ -106,6 +112,9 @@ set backupcopy=yes
 " Disable the bell
 set visualbell
 set t_vb=
+
+" Don't highlight the last searched string unless asked  
+set nohlsearch
 
 " Enable file type detection (filetype on) as well as plugin and indent file
 " loading for specific file types.
@@ -245,11 +254,20 @@ let g:jedi#popup_on_dot=0
 
 
 " -----------------------------------------------------------------------------
+" LINTING
+" -----------------------------------------------------------------------------
+
+let g:ale_linters = {'jsx': ['eslint']}
+
+
+
+" -----------------------------------------------------------------------------
 " AUTOCOMPLETION
 " -----------------------------------------------------------------------------
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
@@ -264,6 +282,3 @@ augroup omnifuncs
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
 
-" Don't autocomplete and use a tab to trigger manually
-let g:deoplete#disable_auto_complete = 0
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
