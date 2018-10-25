@@ -47,12 +47,21 @@ Plug 'junegunn/goyo.vim'
 
 " Autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+
+" Completion from other opened files
+Plug 'Shougo/context_filetype.vim'
+
+" Python autocompletion
+Plug 'zchee/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
+
+" Just to add the python go-to-definition and similar features, autocompletion
+" from this plugin is disabled
+Plug 'davidhalter/jedi-vim'
 
 " Supertab for using tab in insert mode
 Plug 'ervandew/supertab'
 
-" Vue
+" Vue.js
 Plug 'posva/vim-vue'
 
 call plug#end()
@@ -271,6 +280,22 @@ let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
+" Don't show the documentation automatically
+set completeopt-=preview
+
+" Don't insert the first suggestion
+set completeopt+=noinsert
+
+" autocompletion of files and commands behaves like shell
+" (complete only the common part, list the options that match)
+set wildmode=list:longest
+
+" Don't autocomplete and use a tab to trigger manually (this doesn't work)
+let g:deoplete#disable_auto_complete = 0
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" Don't insert a new line after selecting an item
+imap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " omnifuncs
 augroup omnifuncs
